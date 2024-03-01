@@ -8,9 +8,11 @@ export const VIEW_TYPE_EXAMPLE = "example-view";
 
 export class ExampleView extends ItemView {
 	root: Root | null = null;
+	icon: string;
 
 	constructor(leaf: WorkspaceLeaf) {
 		super(leaf);
+		this.icon = "messages-square";
 	}
 
 	getViewType() {
@@ -18,7 +20,7 @@ export class ExampleView extends ItemView {
 	}
 
 	getDisplayText() {
-		return "Example view";
+		return "ObsiChat";
 	}
 
 	async onOpen() {

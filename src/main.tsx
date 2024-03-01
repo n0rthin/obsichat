@@ -23,7 +23,7 @@ export default class ObsiChat extends Plugin {
 
 		this.registerView(VIEW_TYPE_EXAMPLE, (leaf) => new ExampleView(leaf));
 
-		this.addRibbonIcon("dice", "ObsiChat", (evt: MouseEvent) => {
+		this.addRibbonIcon("messages-square", "ObsiChat", (evt: MouseEvent) => {
 			this.activateView();
 		});
 
