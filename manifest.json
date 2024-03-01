@@ -1,11 +1,11 @@
 {
-	"id": "sample-plugin",
-	"name": "Sample Plugin",
+	"id": "obsichat",
+	"name": "ObsiChat",
 	"version": "1.0.0",
 	"minAppVersion": "0.15.0",
-	"description": "Demonstrates some of the capabilities of the Obsidian API.",
-	"author": "Obsidian",
-	"authorUrl": "https://obsidian.md",
-	"fundingUrl": "https://obsidian.md/pricing",
-	"isDesktopOnly": false
+	"description": "Yet another \"chat with your vault\" plugin for Obsidian.",
+	"author": "Vlad Severin",
+	"authorUrl": "https://github.com/n0rthin",
+	"fundingUrl": "https://github.com/n0rthin",
+	"isDesktopOnly": true
 }
