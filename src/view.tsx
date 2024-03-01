@@ -4,30 +4,29 @@ import { StrictMode } from "react";
 import { Root, createRoot } from "react-dom/client";
 import { ReactView } from "./ReactView";
 
-
 export const VIEW_TYPE_EXAMPLE = "example-view";
 
 export class ExampleView extends ItemView {
-    root: Root | null = null;
+	root: Root | null = null;
 
-    constructor(leaf: WorkspaceLeaf) {
-        super(leaf);
-    }
+	constructor(leaf: WorkspaceLeaf) {
+		super(leaf);
+	}
 
-    getViewType() {
-        return VIEW_TYPE_EXAMPLE;
-    }
+	getViewType() {
+		return VIEW_TYPE_EXAMPLE;
+	}
 
-    getDisplayText() {
-        return "Example view";
-    }
+	getDisplayText() {
+		return "Example view";
+	}
 
-    async onOpen() {
+	async onOpen() {
 		this.root = createRoot(this.containerEl.children[1]);
 		this.root.render(
 			<StrictMode>
 				<ReactView />
-			</StrictMode>
+			</StrictMode>,
 		);
 	}
 
