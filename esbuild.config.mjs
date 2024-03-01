@@ -1,6 +1,9 @@
+import "dotenv/config";
 import esbuild from "esbuild";
 import process from "process";
 import builtins from "builtin-modules";
+import path from "node:path";
+import copy from "esbuild-plugin-copy";
 
 const banner =
 `/*
@@ -10,12 +13,13 @@ if you want to view the source, please visit the github repository of this plugi
 `;
 
 const prod = (process.argv[2] === "production");
+const buildDir = process.env.BUILD_DIR || "build";
 
 const context = await esbuild.context({
 	banner: {
 		js: banner,
 	},
-	entryPoints: ["main.ts"],
+	entryPoints: ["./src/main.ts"],
 	bundle: true,
 	external: [
 		"obsidian",
@@ -37,7 +41,18 @@ const context = await esbuild.context({
 	logLevel: "info",
 	sourcemap: prod ? false : "inline",
 	treeShaking: true,
-	outfile: "main.js",
+	outdir: buildDir,
+	plugins: [
+      copy({
+        // this is equal to process.cwd(), which means we use cwd path as base path to resolve `to` path
+        // if not specified, this plugin uses ESBuild.build outdir/outfile options as base path.
+        resolveFrom: 'cwd',
+        assets: {
+          from: ['manifest.json'],
+          to: [path.join(buildDir, 'manifest.json')],
+		},
+      }),
+    ],
 });
 
 if (prod) {
